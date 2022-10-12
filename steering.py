@@ -78,8 +78,6 @@ with mp_hands.Hands(
           except:
               continue
 
-        cv2.circle(img=image, center=(int(xm), int(ym)), radius=radius, color=(195, 255, 62), thickness=15)
-
         l = (int(math.sqrt((co[0][0] - co[1][0]) ** 2 * (co[0][1] - co[1][1]) ** 2)) - 150) // 2
         cv2.line(image, (int(xa), int(ya)), (int(xb), int(yb)), (195, 255, 62), 20)
         if co[0][0] > co[1][0] and co[0][1]>co[1][1] and co[0][1] - co[1][1] > 65:
@@ -88,7 +86,6 @@ with mp_hands.Hands(
             keyinput.release_key('d')
             keyinput.press_key('a')
             cv2.putText(image, "Turn left", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-            cv2.line(image, (int(xbp), int(ybp)), (int(xm), int(ym)), (195, 255, 62), 20)
 
 
         elif co[1][0] > co[0][0] and co[1][1]> co[0][1] and co[1][1] - co[0][1] > 65:
@@ -97,7 +94,6 @@ with mp_hands.Hands(
             keyinput.release_key('d')
             keyinput.press_key('a')
             cv2.putText(image, "Turn left", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-            cv2.line(image, (int(xbp), int(ybp)), (int(xm), int(ym)), (195, 255, 62), 20)
 
 
         elif co[0][0] > co[1][0] and co[1][1]> co[0][1] and co[1][1] - co[0][1] > 65:
@@ -106,7 +102,6 @@ with mp_hands.Hands(
             keyinput.release_key('a')
             keyinput.press_key('d')
             cv2.putText(image, "Turn right", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-            cv2.line(image, (int(xap), int(yap)), (int(xm), int(ym)), (195, 255, 62), 20)
 
         elif co[1][0] > co[0][0] and co[0][1]> co[1][1] and co[0][1] - co[1][1] > 65:
             print("Turn right.")
@@ -114,7 +109,6 @@ with mp_hands.Hands(
             keyinput.release_key('a')
             keyinput.press_key('d')
             cv2.putText(image, "Turn right", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-            cv2.line(image, (int(xap), int(yap)), (int(xm), int(ym)), (195, 255, 62), 20)
         
         else:
             print("keeping straight")
@@ -123,10 +117,7 @@ with mp_hands.Hands(
             keyinput.release_key('d')
             keyinput.press_key('w')
             cv2.putText(image, "keep straight", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-            if ybp>yap:
-                cv2.line(image, (int(xbp), int(ybp)), (int(xm), int(ym)), (195, 255, 62), 20)
-            else:
-                cv2.line(image, (int(xap), int(yap)), (int(xm), int(ym)), (195, 255, 62), 20)
+           
 
     if len(co)==1:
        print("keeping back")
