@@ -99,12 +99,14 @@ with mp_hands.Hands(
             print("Turn right.")
             keyinput.release_key('s')
             keyinput.release_key('a')
+            keyinput.release_key('space')
             keyinput.press_key('d')
             cv2.putText(image, "Turn right", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
 
         elif co[1][0] > co[0][0] and co[0][1]> co[1][1] and co[0][1] - co[1][1] > 65:
             print("Turn right.")
             keyinput.release_key('s')
+            keyinput.release_key('space')
             keyinput.release_key('a')
             keyinput.press_key('d')
             cv2.putText(image, "Turn right", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
@@ -114,7 +116,9 @@ with mp_hands.Hands(
             keyinput.release_key('s')
             keyinput.release_key('a')
             keyinput.release_key('d')
+            keyinput.release_key('space')
             keyinput.press_key('w')
+
             cv2.putText(image, "keep straight", (50, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
            
 
@@ -123,8 +127,20 @@ with mp_hands.Hands(
        keyinput.release_key('a')
        keyinput.release_key('d')
        keyinput.release_key('w')
+       keyinput.release_key('space')
        keyinput.press_key('s')
+       
        cv2.putText(image, "keeping back", (50, 50), font, 1.0, (0, 255, 0), 2, cv2.LINE_AA)
+
+    if len(co)==0:
+        print("Stop")
+        keyinput.release_key('a')
+        keyinput.release_key('d')
+        keyinput.release_key('w')
+        keyinput.release_key('s')
+        keyinput.press_key("space")
+        cv2.putText(image, "halt", (50, 50), font, 1.0, (0, 255, 0), 2, cv2.LINE_AA)
+    
 
     cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
 
